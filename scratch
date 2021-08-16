@@ -1,0 +1,43 @@
+    RADIAL COMPONENT
+
+    We isolate the polynomial constraint and arrange it by degree:
+      E_r p   = -0.5 (DDp - 2a Dp + a^2 p) - (Dp - a p) / r -- radial kinetic
+                + (E_a p/r^2)                               -- angular kinetic
+                - Z p/r + q p                               -- potential
+              = -0.5 DDp - (Dp)/r + E_a p/r^2   -- degree shift minus two
+                -a Dp + (a-Z) p/r               -- degree shift minus one 
+                +(a^2/2+q) p                    -- non-negative degree shift
+    The negative degree coefficients of either side must vanish, and E_r is
+    strictly negative.  So, writing [...] for ...'s constant term, we have:
+      0 = E_a [p] 
+      0 = (a-Z)[p] - [Dp] + E_a [p/r] 
+        = (a-Z)[p] + (E_a - 1) [p/r] 
+    Thus, r divides p unless E_a = 0.  And [p/r] = ((a-Z)/(E_a-1)) [p] unless
+    E_a = 1.  
+
+    RECURRENCE RELATION
+
+    In all, we have the recurrence relation:
+        (-(k+2)(k+1)/2 - (k+2) + E_a) [p]_{k+2}
+      = (-a(k+1) + (a-Z)) [p]_{k+1}
+        + (a^2/2-E_r) [p]_k
+        + sum_l [q]_l [p]_{k-l}
+    Or, simplified:
+        (E_a - (k+2)^2/2) [p]_{k+2}
+      = (-ak - Z) [p]_{k+1}
+        + (a^2/2 - E_r) [p]_k
+        + sum_j [q]_j [p]_{k-j}
+
+    Now, for extremely large k this looks like
+      (-k^2/2)[p]_{k+2} = (-ak)[p]_{k+1} 
+    which results in a divergence unless p has only finitely many terms (i.e., 
+    unless p is a polynomial).  If p is monic with degree k+1 then:
+      0 =   (-ak - Z)
+          + (a^2/2 - E_r) [p]_k
+          + sum_j [q]_j [p]_{k-j}
+
+    Let us now consider the simple case q(r) = eps r^2.  Concretely we have:
+      n=0, E_a=0:
+        a-Z = 0 --> exp(-Zr) 
+      n=1, E_a=0:
+
